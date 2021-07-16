@@ -6,9 +6,6 @@ export PATH=~/bin:$PATH
 # Alias
 alias vi=vim
 alias ll='ls -l'
-if [ "$(uname -s)" = "Darwin" ]; then
-    alias code='open -a "Visual Studio Code.app"'
-fi
 
 # NVM
 function set_nvm_up () {
