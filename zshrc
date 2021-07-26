@@ -36,3 +36,12 @@ if [ -d "$nvm_dir" ]; then
 
     fi
 fi
+
+# Autocomplate
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+
+# Support for Haskell
+if command -v stack 1>&- 2>&-; then
+  eval "$(stack --bash-completion-script stack)"
+fi
