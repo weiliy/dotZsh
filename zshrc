@@ -1,3 +1,6 @@
+# Autocomplate
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
 autoload -U colors && colors
 
 # PATH
@@ -24,11 +27,10 @@ if [ -d "$nvm_dir" ]; then
         # the nvm is manual install via git
         set_nvm_up $nvm_dir "$NVM_DIR/nvm.sh"
 
-    elif [ -r "/usr/local/opt/nvm/nvm.sh" ]; then
-
+    elif [ -r "/opt/homebrew/opt/nvm/nvm.sh" ]; then
         # the nvm is install by brew
-        set_nvm_up $nvm_dir "/usr/local/opt/nvm/nvm.sh"
-
+        set_nvm_up $nvm_dir "/opt/homebrew/opt/nvm/nvm.sh"
+	[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
     else
 
         echo "$fg[red]No nvm is installed, please install it"\
@@ -37,9 +39,6 @@ if [ -d "$nvm_dir" ]; then
     fi
 fi
 
-# Autocomplate
-autoload -U +X compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
 
 # Support for Haskell
 if command -v stack 1>&- 2>&-; then
